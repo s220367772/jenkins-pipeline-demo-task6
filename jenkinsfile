@@ -1,78 +1,85 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
             steps {
-                echo 'Building the code using Maven...'
+                echo 'Build the code using Maven'
             }
         }
+
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit tests using JUnit...'
-                echo 'Running integration tests using Selenium...'
+                echo 'Running the unit & integration tests using JUnit'
+                echo 'Running the unit & integration tests using Taiko'
             }
             post {
                 success {
-                    emailext attachLog: true, 
-                            body: 'Unit and Integration Tests is successfully executed, please find the logs attached to this email, thank you!', 
-                            subject: 'Unit and Integration Tests - Success', 
-                            to: 'kavindu.sandeepaj@gmail.com'
+                    emailtext attachLog: true,
+                              body: 'Running the Unit & Integration tests successfully completed. Please find the attached logs here, Thanks!',
+                              subject: 'SUCCESS | Running the Unit & Integration tests',
+                              to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
-                    emailext attachLog: true, 
-                            body: 'Unit and Integration Tests failed to execute, please find the logs attached to this email, thank you!', 
-                            subject: 'Unit and Integration Tests - Failure', 
-                            to: 'kavindu.sandeepaj@gmail.com'
+                    emailtext attachLog: true,
+                              body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thanks!',
+                              subject: 'FAILED | Running the Unit & Integration tests',
+                              to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
+
         stage('Code Analysis') {
             steps {
-                echo 'Running code analysis using SonarQube...'
+                echo 'Analyze code using SonarQube'
             }
         }
+
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan using OWASP ZAP...'
+                echo 'Perform security scan using OWASP Dependency Check'
             }
             post {
                 success {
-                    emailext attachLog: true, 
-                            body: 'Security Scan is successfully executed, please find the logs attached to this email.', 
-                            subject: 'Security Scan - Success', 
-                            to: 'kavindu.sandeepaj@gmail.com'
+                    emailtext attachLog: true,
+                              body: 'Security Scan successfully completed. Please find the attached logs here, Thanks!',
+                              subject: 'SUCCESS | Security Scan',
+                              to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
-                    emailext attachLog: true, 
-                            body: 'Security Scan failed to execute, please find the logs attached to this email.', 
-                            subject: 'Security Scan - Failure', 
-                            to: 'kavindu.sandeepaj@gmail.com'
+                    emailtext attachLog: true,
+                              body: 'Security Scan failed to complete. Please find the attached logs here, Thanks!',
+                              subject: 'FAILED | Security Scan',
+                              to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
+
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying the application to staging server...'
+                echo 'Deploy to staging server (AWS)'
             }
         }
+
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging environment...'
+                echo 'Run integration tests on the staging environment'
             }
         }
+
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying the application to production server...'
+                echo 'Deploy to production server (e.g., AWS EC2)'
             }
         }
     }
-    post{
-        success{
-            echo "Pipeline successfully executed"
+
+    post {
+        success {
+            echo "The pipeline executed successfully!"
         }
-        failure{
-            echo "Pipeline failed"
+        failure {
+            echo "The pipeline execution failed!"
         }
     }
 }
