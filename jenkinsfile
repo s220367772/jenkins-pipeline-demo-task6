@@ -15,16 +15,15 @@ pipeline {
             }
             post {
                 success {
-                    emailext attachLog: true,
-                             body: 'Running the Unit & Integration tests successfully completed. Please find the attached logs here, Thanks!',
-                             subject: 'SUCCESS | Running the Unit & Integration tests',
-                             to: 'kavindu.sandeepaj@gmail.com'
+                    mail to: "kavindu.sandeepaj@gmail.com",
+                    subject: "Build Status Email"
+                    body: "Running the Unit & Integration tests are succesfully completed. Please find the attached logs here, Thanks!",
                 }
                 failure {
                     emailext attachLog: true,
-                             body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thanks!',
-                             subject: 'FAILED | Running the Unit & Integration tests',
-                             to: 'kavindu.sandeepaj@gmail.com'
+                             mail to: "kavindu.sandeepaj@gmail.com",
+                             subject: "Build Status Email"
+                             body: "Running the Unit & Integration tests are failed to complete. Please find the attached logs here, Thanks!",
                 }
             }
         }
