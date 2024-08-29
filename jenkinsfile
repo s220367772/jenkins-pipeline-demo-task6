@@ -17,13 +17,13 @@ pipeline {
                 success {
                     mail to: "kavindu.sandeepaj@gmail.com",
                     subject: "Build Status Email"
-                    body: "Running the Unit & Integration tests are succesfully completed. Please find the attached logs here, Thanks!",
+                    body: "Running the Unit & Integration tests are succesfully completed. Please find the attached logs here, Thanks!"
                 }
                 failure {
                     emailext attachLog: true,
                              mail to: "kavindu.sandeepaj@gmail.com",
                              subject: "Build Status Email"
-                             body: "Running the Unit & Integration tests are failed to complete. Please find the attached logs here, Thanks!",
+                             body: "Running the Unit & Integration tests are failed to complete. Please find the attached logs here, Thanks!"
                 }
             }
         }
