@@ -15,16 +15,16 @@ pipeline {
             }
             post {
                 success {
-                    emailtext attachLog: true,
-                              body: 'Running the Unit & Integration tests successfully completed. Please find the attached logs here, Thanks!',
-                              subject: 'SUCCESS | Running the Unit & Integration tests',
-                              to: 'kavindu.sandeepaj@gmail.com'
+                    emailext attachLog: true,
+                             body: 'Running the Unit & Integration tests successfully completed. Please find the attached logs here, Thanks!',
+                             subject: 'SUCCESS | Running the Unit & Integration tests',
+                             to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
-                    emailtext attachLog: true,
-                              body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thanks!',
-                              subject: 'FAILED | Running the Unit & Integration tests',
-                              to: 'kavindu.sandeepaj@gmail.com'
+                    emailext attachLog: true,
+                             body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thanks!',
+                             subject: 'FAILED | Running the Unit & Integration tests',
+                             to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
@@ -41,16 +41,16 @@ pipeline {
             }
             post {
                 success {
-                    emailtext attachLog: true,
-                              body: 'Security Scan successfully completed. Please find the attached logs here, Thanks!',
-                              subject: 'SUCCESS | Security Scan',
-                              to: 'kavindu.sandeepaj@gmail.com'
+                    emailext attachLog: true,
+                             body: 'Security Scan successfully completed. Please find the attached logs here, Thanks!',
+                             subject: 'SUCCESS | Security Scan',
+                             to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
-                    emailtext attachLog: true,
-                              body: 'Security Scan failed to complete. Please find the attached logs here, Thanks!',
-                              subject: 'FAILED | Security Scan',
-                              to: 'kavindu.sandeepaj@gmail.com'
+                    emailext attachLog: true,
+                             body: 'Security Scan failed to complete. Please find the attached logs here, Thanks!',
+                             subject: 'FAILED | Security Scan',
+                             to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
