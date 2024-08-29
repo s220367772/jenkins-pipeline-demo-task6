@@ -17,13 +17,13 @@ pipeline {
                     emailext attachLog: true, 
                             body: 'Unit and Integration Tests is successfully executed, please find the logs attached to this email, thank you!', 
                             subject: 'Unit and Integration Tests - Success', 
-                            to: 'amarasinghe.thenuka@gmail.com'
+                            to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
                     emailext attachLog: true, 
                             body: 'Unit and Integration Tests failed to execute, please find the logs attached to this email, thank you!', 
                             subject: 'Unit and Integration Tests - Failure', 
-                            to: 'amarasinghe.thenuka@gmail.com'
+                            to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
@@ -41,13 +41,13 @@ pipeline {
                     emailext attachLog: true, 
                             body: 'Security Scan is successfully executed, please find the logs attached to this email.', 
                             subject: 'Security Scan - Success', 
-                            to: 'amarasinghe.thenuka@gmail.com'
+                            to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
                     emailext attachLog: true, 
                             body: 'Security Scan failed to execute, please find the logs attached to this email.', 
                             subject: 'Security Scan - Failure', 
-                            to: 'amarasinghe.thenuka@gmail.com'
+                            to: 'kavindu.sandeepaj@gmail.com'
                 }
             }
         }
