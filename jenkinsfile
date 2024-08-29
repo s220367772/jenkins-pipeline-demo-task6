@@ -15,15 +15,14 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "kavindu.sandeepaj@gmail.com",
-                    subject: "Build Status Email"
-                    body: "Running the Unit & Integration tests are succesfully completed. Please find the attached logs here, Thanks!"
+                    mail(to: "kavindu.sandeepaj@gmail.com",
+                         subject: "SUCCESS | Running the Unit & Integration tests",
+                         body: "Running the Unit & Integration tests successfully completed. Please find the attached logs here. Thanks!")
                 }
                 failure {
-                    
-                    mail to: "kavindu.sandeepaj@gmail.com",
-                    subject: "Build Status Email"
-                    body: "Running the Unit & Integration tests are failed to complete. Please find the attached logs here, Thanks!"
+                    mail(to: "kavindu.sandeepaj@gmail.com",
+                         subject: "FAILED | Running the Unit & Integration tests",
+                         body: "Running the Unit & Integration tests failed to complete. Please find the attached logs here. Thanks!")
                 }
             }
         }
@@ -41,13 +40,13 @@ pipeline {
             post {
                 success {
                     emailext attachLog: true,
-                             body: 'Security Scan successfully completed. Please find the attached logs here, Thanks!',
+                             body: 'Security Scan successfully completed. Please find the attached logs here. Thanks!',
                              subject: 'SUCCESS | Security Scan',
                              to: 'kavindu.sandeepaj@gmail.com'
                 }
                 failure {
                     emailext attachLog: true,
-                             body: 'Security Scan failed to complete. Please find the attached logs here, Thanks!',
+                             body: 'Security Scan failed to complete. Please find the attached logs here. Thanks!',
                              subject: 'FAILED | Security Scan',
                              to: 'kavindu.sandeepaj@gmail.com'
                 }
