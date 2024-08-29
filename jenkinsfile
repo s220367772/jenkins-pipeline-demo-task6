@@ -22,7 +22,7 @@ pipeline {
                 }
                 failure {
                     emailext attachLog: true,
-                             body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thanks!',
+                             body: 'Running the Unit & Integration tests failed to complete. Please find the attached logs here, Thank you!',
                              subject: 'FAILED | Running the Unit & Integration tests',
                              to: 'kavindu.sandeepaj@gmail.com'
                 }
